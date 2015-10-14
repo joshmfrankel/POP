@@ -1,0 +1,45 @@
+
+Goal:
+  To create an app that allows research students to login and search an article database to find the impact
+  factor on various publication sources.
+
+Features:
+ ☐ Users
+ ☐ Active Admin management
+ ☐ Facetted search
+
+Task Breakdown:
+ ☐ Navigation for logged in and non-logged in users
+ ☐ Bootstrap menu setup
+ ☐ Navigation with static pages
+ ☐ Robots.txt
+ ☐ Sitemap.xml
+ ☐ Journal Model
+   ☐ Name
+   ☐ Type
+   ☐ Impact
+   ☐ Similiar published works
+   ☐ Authors
+ ☐ Facetted Search of Journals
+ ☐ Travis CI
+ ☐ Admin allowed to manage users
+
+ Things I am focussed on:
+  ☐ Rspec
+  ☐ Capybara
+  ☐ FactoryGirl
+  ☐ Admin managing a devise system
+  ☐ Git tags, branches, and releases
+  ☐ Continous Integration
+
+Things I Completed:
+ ✔ Git repo setup @done (15-10-13 21:20)
+ ✔ Guard Rspec setup @done (15-10-13 21:20)
+ ✔ Guard Spring setup @done (15-10-13 21:20)
+ ✔ Guard Notifications @done (15-10-13 21:20)
+ ✔ Rubocop Setup @done (15-10-13 21:20)
+ ✔ Rspec setup @done (15-10-13 21:20)
+ ✔ Capybara setup @done (15-10-13 21:20)
+ ✔ Bootstrap-sass setup @done (15-10-13 21:20)
+ ✔ Spring Setup @done (15-10-13 21:20)
+ ✔ Devise User model setup @done (15-10-13 21:20)
