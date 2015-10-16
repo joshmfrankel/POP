@@ -4,7 +4,8 @@ Goal:
   factor on various publication sources.
 
 Features:
- ☐ Users
+ ☐ User Roles
+ ☐ Moderation
  ☐ Active Admin management
  ☐ Facetted search
 
@@ -15,14 +16,32 @@ Task Breakdown:
  ☐ Robots.txt
  ☐ Sitemap.xml
  ☐ Journal Model
-   ☐ Name
-   ☐ Type
-   ☐ Impact
-   ☐ Similiar published works
-   ☐ Authors
- ☐ Facetted Search of Journals
- ☐ Travis CI
- ☐ Admin allowed to manage users
+   ☐ Title
+   ☐ Editor
+   ☐ Keywords
+   ☐ description
+   ☐ Impact factor last 5 years
+   ☐ methodology accepted (has_many)
+     ☐ Tags model
+ ☐ Roles
+   ☐ Users
+     ☐ Can use search functionality
+     ☐ Can create new journal record for moderation
+     ☐ 5 free searches
+     ☐ Paid account gets infinite
+   ☐ Moderator
+     ☐ Can manage Users
+     ☐ Can manage Journals
+     ☐ Can manage Tags
+ ☐ Search
+   ☐ Search by any journal model column
+   ☐ Search by date created / updated
+   ☐ Elastic Search & ransack research
+
+Assocations:
+ ☐ Journal has_many Tags
+ ☐ Tag belongs_to Journals
+ ☐ Free User, Paid User, Moderator
 
  Things I am focussed on:
   ☐ Rspec
@@ -31,6 +50,8 @@ Task Breakdown:
   ☐ Admin managing a devise system
   ☐ Git tags, branches, and releases
   ☐ Continous Integration
+  ☐ Ransack or Elastic search maybe?
+  ☐ TravisCI?
 
 Things I Completed:
  ✔ Git repo setup @done (15-10-13 21:20)

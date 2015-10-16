@@ -14,3 +14,4 @@ searching for and finding publishing journals with various impact factors.
 * Capybara
 * FactoryGirl
 * Bootstrap-sass
+* Active Admin  
