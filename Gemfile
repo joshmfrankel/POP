@@ -51,11 +51,14 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
-  gem 'rb-fsevent' if `uname` =~ /Darwin/
 end
 
 group :test do
   gem 'codeclimate-test-reporter'
+end
+
+group :test, :darwin do
+  gem 'rb-fsevent'
 end
 
 group :development do
