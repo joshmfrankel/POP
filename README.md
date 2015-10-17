@@ -1,6 +1,7 @@
 # POP: Publish or Perish  
-[![Code Climate](https://codeclimate.com/github/joshmfrankel/POP/badges/gpa.svg)](https://codeclimate.com/github/joshmfrankel/POP)  
-[![Test Coverage](https://codeclimate.com/github/joshmfrankel/POP/badges/coverage.svg)](https://codeclimate.com/github/joshmfrankel/POP/coverage)  
+[![Code Climate](https://codeclimate.com/github/joshmfrankel/POP/badges/gpa.svg)](https://codeclimate.com/github/joshmfrankel/POP)
+[![Test Coverage](https://codeclimate.com/github/joshmfrankel/POP/badges/coverage.svg)](https://codeclimate.com/github/joshmfrankel/POP/coverage)
+[![Build Status](https://travis-ci.org/joshmfrankel/POP.svg?branch=master)](https://travis-ci.org/joshmfrankel/POP)
 
 An application designed to allow research and graduate students an easy method of
 searching for and finding publishing journals with various impact factors.
