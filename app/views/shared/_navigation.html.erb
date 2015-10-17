@@ -36,6 +36,9 @@
           </li>
           sign out, profile, upload
         <% else %>
+          <%= content_tag(:li, "") do %>
+            <%= link_to("Login", new_user_session_path) %>
+          <% end %>
           sign in / sign up
         <% end %>
         <li class="dropdown">

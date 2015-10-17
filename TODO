@@ -48,9 +48,9 @@ Assocations:
   ☐ Capybara
   ☐ FactoryGirl
   ☐ Admin managing a devise system
+  ☐ Elastic search
   ☐ Git tags, branches, and releases
   ☐ Continous Integration
-  ☐ Ransack or Elastic search maybe?
   ☐ TravisCI?
 
 Things I Completed:
