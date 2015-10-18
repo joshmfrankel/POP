@@ -50,8 +50,8 @@ Assocations:
   ☐ Admin managing a devise system
   ☐ Elastic search
   ☐ Git tags, branches, and releases
-  ☐ Continous Integration
-  ☐ TravisCI?
+  ✔ Continous Integration @done (15-10-17 16:38)
+  ✔ TravisCI? @done (15-10-17 16:38)
 
 Things I Completed:
  ✔ Git repo setup @done (15-10-13 21:20)

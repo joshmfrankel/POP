@@ -53,6 +53,9 @@ guard :rspec, cmd: "spring rspec", notification: 'terminal_notifier' do
   dsl.watch_spec_files_for(rails.app_files)
   dsl.watch_spec_files_for(rails.views)
 
+  # Run feature specs when views change
+  watch(%r{^app/views/(.*)}) { 'spec/features' }
+
   watch(rails.controllers) do |m|
     [
       rspec.spec.("routing/#{m[1]}_routing"),

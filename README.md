@@ -55,4 +55,4 @@ Results will be listed with the addition of: created_at and updated_at columns
 * Devise  
 * Elasticsearch  
 * Guard  
-* Rubocop
+* Rubocop  
