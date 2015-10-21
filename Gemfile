@@ -44,13 +44,15 @@ group :development, :test do
   # and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~>3.0'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', '4.5.0'
   gem 'capybara'
   gem 'pry'
   gem 'terminal-notifier-guard'
   gem 'guard'
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :test do

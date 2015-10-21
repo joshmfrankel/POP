@@ -32,7 +32,7 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
-guard :rspec, cmd: "spring rspec", notification: 'terminal_notifier' do
+guard :rspec, cmd: "spring rspec --tty", notification: 'terminal_notifier' do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
