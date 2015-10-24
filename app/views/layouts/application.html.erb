@@ -1,7 +1,9 @@
 <%= render '/shared/header' %>
-<body>
-<%= render '/shared/navigation' %>
-<%= yield %>
+<div id="hero-navigation" class="container-fluid">
+  <%= render '/shared/navigation' %>
+  <div class="row">
+    <%= yield %>
+  </div>
+</div>
 
-</body>
-</html>
+<%= render '/shared/footer' %>

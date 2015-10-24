@@ -15,6 +15,7 @@ Task Breakdown:
  ☐ Navigation with static pages
  ☐ Robots.txt
  ☐ Sitemap.xml
+ ☐ Favorites
  ☐ Journal Model
    ☐ Title
    ☐ Editor
@@ -37,11 +38,16 @@ Task Breakdown:
    ☐ Search by any journal model column
    ☐ Search by date created / updated
    ☐ Elastic Search & ransack research
+ ☐ Twitter automated updates
+   ☐ When journal is accepted
 
 Assocations:
  ☐ Journal has_many Tags
  ☐ Tag belongs_to Journals
  ☐ Free User, Paid User, Moderator
+ ☐ User has_many Favorites
+ ☐ Favorites belong_to User
+ ☐ Favorite has_one Journal
 
  Things I am focussed on:
   ☐ Rspec
