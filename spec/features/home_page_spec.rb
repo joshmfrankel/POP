@@ -8,6 +8,7 @@ feature 'Navigation' do
 
   scenario 'should have valid USER links' do
     visit root_url
+
     #should have_link 'Logout', href: destroy_user_session_path
   end
 

@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   resources :journals
-  devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'register' }
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_up: 'register', sign_out: 'logout' }
 
   get 'pages/home'
   get 'pages/about'
   get 'pages/contact'
   get 'pages/features'
   root 'pages#home'
+
+  get 'searches/index'
 
   # The priority is based upon order of creation: first created ->
   # highest priority.

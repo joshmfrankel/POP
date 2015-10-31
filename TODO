@@ -71,3 +71,9 @@ Things I Completed:
  ✔ Devise User model setup @done (15-10-13 21:20)
 
  rails g resource Journals title:string editor:string keywords:string description:text impact_factor:integer
+
+
+j = new journal
+m = new methodology
+j.methodologies << m
+j.methodologies == methodology
