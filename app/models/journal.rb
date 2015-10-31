@@ -7,6 +7,7 @@ class Journal < ActiveRecord::Base
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :title, analyzer: 'english', index_options: 'offsets'
+      indexes :editor, analyzer: 'english'
     end
   end
 
@@ -21,7 +22,7 @@ class Journal < ActiveRecord::Base
       query: {
         multi_match: {
           query: query,
-          fields: ['title'],
+          fields: ['title^5', 'editor'],
           fuzziness: 'AUTO'
         }
       },
