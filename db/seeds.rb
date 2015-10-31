@@ -7,4 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create! email: 'test@example.com',
              password: 'Test1234',
-             password_confirmation: 'Test1234'
+             password_confirmation: 'Test1234',
+             role: 1
+
+User.create! email: 'mod@example.com',
+             password: 'Mod1234',
+             password_confirmation: 'Mod1234',
+             role: 2
+
+User.create!  email: 'admin@example.com',
+              password: 'Admin1234',
+              password_confirmation: 'Admin1234',
+              role: 3

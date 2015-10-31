@@ -17,13 +17,12 @@ Task Breakdown:
  ☐ Sitemap.xml
  ☐ Favorites
  ☐ Journal Model
-   ☐ Title
-   ☐ Editor
-   ☐ Keywords
-   ☐ description
-   ☐ Impact factor last 5 years
-   ☐ methodology accepted (has_many)
-     ☐ Tags model
+   ✔ Title @done (15-10-31 13:12)
+   ✔ Editor @done (15-10-31 13:12)
+   ☐ Keywords (has_and_belongs_to_many)
+   ✔ description @done (15-10-31 13:12)
+   ✔ Impact factor last 5 years @done (15-10-31 13:12)
+   ✔ methodology accepted (has_and_belongs_to_many) @done (15-10-31 13:12)
  ☐ Roles
    ☐ Users
      ☐ Can use search functionality
@@ -70,3 +69,5 @@ Things I Completed:
  ✔ Bootstrap-sass setup @done (15-10-13 21:20)
  ✔ Spring Setup @done (15-10-13 21:20)
  ✔ Devise User model setup @done (15-10-13 21:20)
+
+ rails g resource Journals title:string editor:string keywords:string description:text impact_factor:integer
