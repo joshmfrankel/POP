@@ -1,0 +1,15 @@
+<h2>Hi</h2>
+<%= form_tag search_path, method: :get do %>
+  <%= content_tag(:label) do %>
+    Search terms: <%= text_field_tag :q, params[:q] %>
+  <% end %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<ul>
+  <% @journals.each do |journal| %>
+    <li>
+      <%= journal.title %>
+    </li>
+  <% end %>
+</ul>

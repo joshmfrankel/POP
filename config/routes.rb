@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'pages/features'
   root 'pages#home'
 
-  get 'searches/index'
+  get 'search', to: 'searches#search'
 
   # The priority is based upon order of creation: first created ->
   # highest priority.
