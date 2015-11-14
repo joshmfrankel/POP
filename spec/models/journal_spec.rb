@@ -21,4 +21,5 @@ RSpec.describe Journal, type: :model do
     expect(build(:journal, impact_factor: 'A#')).to_not be_valid
     expect(build(:journal, impact_factor: 5.6)).to_not be_valid
   end
+
 end

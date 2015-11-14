@@ -2,36 +2,36 @@ module Authorizable
   extend ActiveSupport::Concern
 
   included do
-    helper_method :authorize_user, :authorize_moderator, :authorize_admin
+    helper_method :authorized_user?, :authorize_moderator?, :authorized_admin?
   end
 
   def authorize_admin!
-    unless current_user.admin?
+    unless authorized_admin?
       redirect_unauthorized
     end
   end
 
   def authorize_moderator!
-    unless current_user.moderator? || authorize_admin!
+    unless authorized_moderator?
       redirect_unauthorized
     end
   end
 
   def authorize_user!
-    unless current_user.user? || authorize_moderator! || authorize_admin!
+    unless authorized_user?
       redirect_unauthorized
     end
   end
 
-  def authorize_user
+  def authorized_user?
     current_user.user? || current_user.moderator? || current_user.admin?
   end
 
-  def authorize_moderator
+  def authorized_moderator?
     current_user.moderator? || current_user.admin?
   end
 
-  def authorize_admin
+  def authorized_admin?
     current_user.admin?
   end
 

@@ -23,14 +23,20 @@ User.create!  email: 'admin@example.com',
 Journal.create! title: 'Scientists checking nomenclature',
                 editor: 'Josh',
                 description: 'Journal deals with categories of naming',
-                impact_factor: 5
+                impact_factor: 5,
+                approved: true,
+                user_id: 1
 
 Journal.create! title: 'Graduate students easy submission process',
                 editor: 'Megan',
                 description: 'Accepts all articles. Such easy',
-                impact_factor: 1
+                impact_factor: 1,
+                approved: false,
+                user_id: 1
 
 Journal.create! title: 'Klatuu Barata Nickto',
                 editor: 'Ash',
                 description: 'Hail to the king baby',
-                impact_factor: 15
+                impact_factor: 15,
+                approved: true,
+                user_id: 2

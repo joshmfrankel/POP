@@ -46,11 +46,14 @@ gem 'elasticsearch-rails', '0.1.8'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution
   # and get a debugger console
-  gem 'byebug'
+  gem 'byebug', '~> 1.1.1'
   gem 'rspec-rails', '~>3.0'
   gem 'factory_girl_rails', '4.5.0'
   gem 'capybara', '2.5.0'
   gem 'pry', '0.10.1'
+  gem 'pry-remote', '0.1.8'
+  gem 'pry-nav', '0.2.4'
+  gem 'pry-byebug', '1.0.1'
   gem 'terminal-notifier-guard'
   gem 'guard'
   gem 'guard-rspec'

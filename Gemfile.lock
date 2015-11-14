@@ -47,7 +47,9 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
     builder (3.2.2)
-    byebug (6.0.2)
+    byebug (1.1.1)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     callsite (0.0.11)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -65,8 +67,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    columnize (0.3.6)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     devise (3.5.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -171,6 +175,14 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (1.0.1)
+      byebug (~> 1.1.1)
+      pry (>= 0.9.10)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
     rack (1.6.4)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
@@ -284,7 +296,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (= 3.3.5.1)
-  byebug
+  byebug (~> 1.1.1)
   capybara (= 2.5.0)
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
@@ -302,6 +314,9 @@ DEPENDENCIES
   jquery-turbolinks
   meta_request (= 0.3.4)
   pry (= 0.10.1)
+  pry-byebug (= 1.0.1)
+  pry-nav (= 0.2.4)
+  pry-remote (= 0.1.8)
   rack-livereload (= 0.3.16)
   rails (= 4.2.4)
   rb-fsevent
