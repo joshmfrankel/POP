@@ -1,5 +1,13 @@
 class JournalsController < ApplicationController
   before_action :set_journal, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :authorize_admin!, only: [:destroy]
+  before_action :authorize_moderator!, only: [:index, :edit, :update, :show]
+  before_action :authorize_user!, only: [:new, :create]
+  #destroy - admin
+  #update/edit/list - moderator
+  #create/new - user
+
 
   # GET /journals
   # GET /journals.json
@@ -69,6 +77,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params[:journal]
+      params.require(:journal).permit(:title, :editor, :impact_factor)
     end
 end

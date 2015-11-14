@@ -24,17 +24,25 @@ RSpec.describe JournalsController, type: :controller do
   # Journal. As you add validations to Journal, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:journal).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    build(:journal, title: nil, editor: nil, impact_factor: nil).attributes
   }
+
+  # before do |example|
+  #   unless example.metadata[:skip_before]
+  #     sign_in create(:user, :user)
+  #   end
+  # end
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # JournalsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) {
+    sign_in create(:user, :user)
+  }
 
   describe "GET #index" do
     it "assigns all journals as @journals" do
@@ -103,7 +111,7 @@ RSpec.describe JournalsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        build(:journal).attributes
       }
 
       it "updates the requested journal" do
