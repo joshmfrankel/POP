@@ -2,8 +2,8 @@ class JournalsController < ApplicationController
   before_action :set_journal, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :authorize_admin!, only: [:destroy]
-  before_action :authorize_moderator!, only: [:index, :edit, :update, :show]
-  before_action :authorize_user!, only: [:new, :create]
+  before_action :authorize_moderator!, only: [:index, :edit, :update]
+  before_action :authorize_user!, only: [:new, :create, :show]
 
   # GET /journals
   # GET /journals.json
@@ -29,6 +29,7 @@ class JournalsController < ApplicationController
   # POST /journals.json
   def create
     @journal = Journal.new(journal_params)
+    @journal.user_id = current_user.id # Refactor
 
     respond_to do |format|
       if @journal.save
@@ -63,6 +64,14 @@ class JournalsController < ApplicationController
       format.html { redirect_to journals_url, notice: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def approve
+    @journal.approve!
+  end
+
+  def unapprove
+    @journal.unapprove!
   end
 
   private

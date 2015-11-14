@@ -3,6 +3,7 @@ require 'elasticsearch/model'
 class Journal < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  include Approvable::ModelMethods
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do

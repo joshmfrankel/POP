@@ -11,6 +11,18 @@
     </div>
   <% end %>
 
+  <%= content_tag(:label) do %>
+    Title: <%= f.text_field :title %>
+  <% end %>
+
+  <%= content_tag(:label) do %>
+    Editor: <%= f.text_field :editor %>
+  <% end %>
+
+  <%= content_tag(:label) do %>
+    Impact Factor: <%= f.text_field :impact_factor %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
