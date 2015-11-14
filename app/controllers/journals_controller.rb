@@ -4,10 +4,6 @@ class JournalsController < ApplicationController
   before_action :authorize_admin!, only: [:destroy]
   before_action :authorize_moderator!, only: [:index, :edit, :update, :show]
   before_action :authorize_user!, only: [:new, :create]
-  #destroy - admin
-  #update/edit/list - moderator
-  #create/new - user
-
 
   # GET /journals
   # GET /journals.json
