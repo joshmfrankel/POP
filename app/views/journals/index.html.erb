@@ -12,6 +12,7 @@
         <td>Description</td>
         <td>Impact Factor</td>
         <td>Approved?</td>
+        <td>Created By</td>
         <td>Show</td>
         <td>Edit</td>
         <td>Destroy</td>
@@ -25,7 +26,8 @@
           <td><%= journal.editor %></td>
           <td><%= journal.description %></td>
           <td><%= journal.impact_factor %></td>
-          <td><%= journal.approved.inspect %></td>
+          <td><%= journal.approved %></td>
+          <td><%= journal.user.email %></td>
           <td><%= link_to 'Show', journal %></td>
           <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
           <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

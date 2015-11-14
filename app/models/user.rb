@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   enum role: [:user, :moderator, :admin]
 
+  has_many :journals
+
   after_initialize :set_default_role, if: :new_record?
 
   validates :role, presence: true

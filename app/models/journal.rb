@@ -12,6 +12,7 @@ class Journal < ActiveRecord::Base
   end
 
   has_and_belongs_to_many :methodologies
+  belongs_to :user
 
   validates :title, presence: true
   validates :editor, presence: true
