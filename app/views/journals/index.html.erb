@@ -20,15 +20,15 @@
     </thead>
     <tbody>
       <% @journals.each do |journal| %>
-        <tr>
+        <tr data-id="<%= journal.id %>">
           <td></td>
           <td><%= journal.title %></td>
           <td><%= journal.editor %></td>
           <td><%= journal.description %></td>
           <td><%= journal.impact_factor %></td>
-          <td><%= journal.approved %></td>
+          <td data-attribute="approved"><%= journal.approved %></td>
           <td><%= journal.user.email %></td>
-          <td><%= link_to("Approve", approve_journal_path(journal), method: :put) %></td>
+          <td><%= link_to("Approve", approve_journal_path(journal), remote: true, method: :put) %></td>
           <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
           <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>

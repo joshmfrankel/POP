@@ -2,6 +2,7 @@ module Approvable
   extend ActiveSupport::Concern
 
   module ModelMethods
+
     def approve!
       self.approved = true
       self.save!

@@ -1,8 +1,8 @@
 class JournalsController < ApplicationController
-  before_action :set_journal, only: [:show, :edit, :update, :destroy]
+  before_action :set_journal, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
   before_action :authenticate_user!
   before_action :authorize_admin!, only: [:destroy]
-  before_action :authorize_moderator!, only: [:index, :edit, :update]
+  before_action :authorize_moderator!, only: [:index, :edit, :update, :approve, :unapprove]
   before_action :authorize_user!, only: [:new, :create, :show]
 
   # GET /journals
@@ -28,7 +28,7 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.json
   def create
-    @journal = Journal.new(journal_params)
+    @journal         = Journal.new(journal_params)
     @journal.user_id = current_user.id # Refactor
 
     respond_to do |format|
@@ -67,17 +67,27 @@ class JournalsController < ApplicationController
   end
 
   def approve
-    @journal.approve!
+    if @journal.approve!
+      flash.now[:notice] = 'Journal approved'
+      render json: { approved: true, id: @journal.id }
+    else
+      render json: { invalid: true }
+    end
   end
 
   def unapprove
-    @journal.unapprove!
+    if @journal.unapprove!
+      render json: { approved: false }
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_journal
       @journal = Journal.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      # redirect_to journals_path, method: :get, notice: 'Journal does not exist'
+      puts 'hi'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

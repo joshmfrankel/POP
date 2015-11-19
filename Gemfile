@@ -76,6 +76,7 @@ group :development do
   gem 'guard-livereload', '2.5.0'
   gem 'rack-livereload', '0.3.16'
   gem 'meta_request', '0.3.4'
+  gem 'better_errors', '2.1.1'
 
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
