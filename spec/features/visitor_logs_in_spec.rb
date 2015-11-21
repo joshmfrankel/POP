@@ -32,6 +32,7 @@ feature 'Navigation menu' do
 
     expect(page).to_not have_link 'Add Journal', href: new_journal_path
     expect(page).to have_link 'Manage Journals', href: journals_path
+    expect(page).to have_link 'Manage Methodologies', href: methodologies_path
   end
 
   scenario 'should have valid ADMIN links' do
@@ -44,6 +45,7 @@ feature 'Navigation menu' do
 
     expect(page).to have_link 'Manage Journals', href: journals_path
     expect(page).to have_link 'Manage Users', href: '#'
+        expect(page).to have_link 'Manage Methodologies', href: methodologies_path
   end
 
   def login_by_role(role)

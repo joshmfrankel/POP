@@ -36,6 +36,7 @@
                 <li><%= link_to("Add Journal", new_journal_path) %>
               <% else %>
                 <li><%= link_to("Manage Journals", journals_path) %></li>
+                <li><%= link_to("Manage Methodologies", methodologies_path) %></li>
               <% end %>
 
               <% if current_user.admin? %>

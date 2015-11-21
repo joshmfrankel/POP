@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
-  <%= content_tag(:label) do %>
-    Title: <%= f.text_field :title %>
-  <% end %>
+  <%= label_tag 'title', 'Title:' %>
+  <%= f.text_field :title %><br />
 
-  <%= content_tag(:label) do %>
-    Editor: <%= f.text_field :editor %>
-  <% end %>
+  <%= label_tag 'editor', 'Editor:' %>
+  <%= f.text_field :editor %><br />
 
-  <%= content_tag(:label) do %>
-    Impact Factor: <%= f.text_field :impact_factor %>
-  <% end %>
+  <%= label_tag 'impact_factor', 'Impact Factor' %>
+  <%= f.text_field :impact_factor %><br />
+
+  <%= label_tag 'description', 'Description' %>
+  <%= f.text_field :description %><br />
+
 
   <div class="actions">
     <%= f.submit %>
