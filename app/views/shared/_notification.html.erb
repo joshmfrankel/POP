@@ -1,5 +1,7 @@
-<% unless flash[:alert].nil? %>
-  <div class="alert alert-danger">
-    <%= flash[:alert] %>
+<% unless flash.nil? %>
+  <div id="flash">
+    <% flash.each do |key, value| %>
+      <p class="alert alert-<%= key %>"><%= value %></p>
+    <% end %>
   </div>
 <% end %>

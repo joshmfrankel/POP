@@ -99,7 +99,7 @@ RSpec.describe JournalsController, type: :controller do
 
       it "redirects to the created journal" do
         post :create, {:journal => valid_attributes}, valid_user_session
-        expect(response).to redirect_to(Journal.last)
+        expect(response).to redirect_to journals_url
       end
     end
 
@@ -138,7 +138,7 @@ RSpec.describe JournalsController, type: :controller do
       it "redirects to the journal" do
         journal = Journal.create! valid_attributes
         put :update, {:id => journal.to_param, :journal => valid_attributes}, valid_moderator_session
-        expect(response).to redirect_to(journal)
+        expect(response).to redirect_to journals_url
       end
     end
 
@@ -172,4 +172,42 @@ RSpec.describe JournalsController, type: :controller do
     end
   end
 
+  describe 'PUT #approve and PUT #unapprove' do
+    context 'for moderator' do
+      it 'approves the journal' do
+        journal = Journal.create! valid_attributes
+        put :approve, { id: journal.to_param }, valid_moderator_session
+        journal.reload
+        expect(response).to have_http_status(:success)
+        expect(journal.approved).to be_truthy
+      end
+
+      it 'unapproves the journal' do
+        journal = Journal.create! valid_attributes
+        put :unapprove, { id: journal.to_param }, valid_moderator_session
+        journal.reload
+        expect(response).to have_http_status(:success)
+        expect(journal.approved).to be_falsey
+      end
+    end
+
+    context 'for user' do
+      it 'not allowed to approve journal' do
+        journal = Journal.create! valid_attributes
+        put :approve, { id: journal.to_param }, valid_user_session
+        journal.reload
+        expect(response).to have_http_status(302)
+        expect(journal.approved).to be_nil
+      end
+
+      it 'not allowed to unapprove journal' do
+        journal = Journal.create! valid_attributes
+        put :unapprove, { id: journal.to_param }, valid_user_session
+        journal.reload
+        expect(response).to have_http_status(302)
+        expect(journal.approved).to be_nil
+      end
+    end
+
+  end
 end

@@ -1,0 +1,6 @@
+.alert-notice {
+  @extend .alert-info;
+}
+.alert-error {
+  @extend .alert-danger;
+}

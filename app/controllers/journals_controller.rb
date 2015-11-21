@@ -33,8 +33,8 @@ class JournalsController < ApplicationController
 
     respond_to do |format|
       if @journal.save
-        format.html { redirect_to @journal, notice: 'Journal was successfully created.' }
-        format.json { render :show, status: :created, location: @journal }
+        format.html { redirect_to journals_url, notice: 'Journal was successfully created.' }
+        format.json { render :index, status: :created, location: @journal }
       else
         format.html { render :new }
         format.json { render json: @journal.errors, status: :unprocessable_entity }
@@ -47,8 +47,8 @@ class JournalsController < ApplicationController
   def update
     respond_to do |format|
       if @journal.update(journal_params)
-        format.html { redirect_to @journal, notice: 'Journal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @journal }
+        format.html { redirect_to journals_url, success: 'Journal was successfully updated.' }
+        format.json { render :index, status: :ok, location: @journal }
       else
         format.html { render :edit }
         format.json { render json: @journal.errors, status: :unprocessable_entity }
@@ -68,7 +68,6 @@ class JournalsController < ApplicationController
 
   def approve
     if @journal.approve!
-      flash.now[:notice] = 'Journal approved'
       render json: { approved: true, id: @journal.id }
     else
       render json: { invalid: true }
@@ -77,7 +76,9 @@ class JournalsController < ApplicationController
 
   def unapprove
     if @journal.unapprove!
-      render json: { approved: false }
+      render json: { approved: false, id: @journal.id }
+    else
+      render json: { invalid: true }
     end
   end
 
@@ -92,6 +93,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(:title, :editor, :impact_factor)
+      params.require(:journal).permit(:title, :editor, :impact_factor, :user_id)
     end
 end

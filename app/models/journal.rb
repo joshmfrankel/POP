@@ -9,6 +9,7 @@ class Journal < ActiveRecord::Base
     mappings dynamic: 'false' do
       indexes :title, analyzer: 'english', index_options: 'offsets'
       indexes :editor, analyzer: 'english'
+      indexes :description, analyzer: 'english'
     end
   end
 

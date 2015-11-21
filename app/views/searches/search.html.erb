@@ -1,4 +1,4 @@
-<h2>Hi</h2>
+<h2>Journal Search</h2>
 <%= form_tag search_path, method: :get do %>
   <%= content_tag(:label) do %>
     Search terms: <%= text_field_tag :q, params[:q] %>
@@ -8,8 +8,14 @@
 
 <ul>
   <% @journals.each do |journal| %>
-    <li>
-      <%= journal.title %>
+    <li class="media">
+      <div class="media-body">
+        <h3 class="media-heading"><em><%= journal.title %></em></h3>
+        <p><strong>Editor:</strong> <%= journal.editor %><br />
+        <strong>Impact Factor:</strong> <%= journal.impact_factor %><br />
+        <strong>Description:</strong> <%= journal.description %><br />
+        <%= link_to("See details", journal_path(journal.id)) %>
+      </div>
     </li>
   <% end %>
 </ul>

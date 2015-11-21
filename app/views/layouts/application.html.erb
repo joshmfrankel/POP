@@ -1,10 +1,11 @@
 <%= render '/shared/header' %>
-<%= render '/shared/notification' %>
+
 
 <div id="hero-navigation" class="container-fluid">
   <%= render '/shared/navigation' %>
   <div class="container-fluid">
     <div class="row">
+      <%= render '/shared/notification' %>
       <%= yield %>
     </div>
   </div>
