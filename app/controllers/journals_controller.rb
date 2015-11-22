@@ -4,6 +4,7 @@ class JournalsController < ApplicationController
   before_action :authorize_admin!, only: [:destroy]
   before_action :authorize_moderator!, only: [:index, :edit, :update, :approve, :unapprove]
   before_action :authorize_user!, only: [:new, :create, :show]
+  before_action :methodologies, only: [:new, :edit]
 
   # GET /journals
   # GET /journals.json
@@ -28,8 +29,8 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.json
   def create
-    @journal         = Journal.new(journal_params)
-    @journal.user_id = current_user.id # Refactor
+    # A user has many journals. A journal belongs to a user
+    @journal = current_user.journals.new(journal_params)
 
     respond_to do |format|
       if @journal.save
@@ -83,6 +84,11 @@ class JournalsController < ApplicationController
   end
 
   private
+
+    def methodologies
+      @methodologies = Methodology.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_journal
       @journal = Journal.find(params[:id])
@@ -93,6 +99,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(:title, :editor, :impact_factor, :user_id)
+      params.require(:journal).permit(:title, :editor, :impact_factor, :user_id, methodology_attributes: [:name])
     end
 end
