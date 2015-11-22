@@ -38,6 +38,6 @@ module Authorizable
   private
 
   def redirect_unauthorized
-    redirect_to root_url, alert: I18n.t('authorization.denied')
+    redirect_to root_url, status: :found, alert: I18n.t('authorization.denied')
   end
 end

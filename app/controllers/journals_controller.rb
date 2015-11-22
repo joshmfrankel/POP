@@ -61,7 +61,7 @@ class JournalsController < ApplicationController
   def destroy
     @journal.destroy
     respond_to do |format|
-      format.html { redirect_to journals_url, notice: 'Journal was successfully destroyed.' }
+      format.html { redirect_to journals_url, success: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

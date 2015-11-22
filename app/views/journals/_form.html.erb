@@ -23,7 +23,12 @@
   <%= label_tag 'description', 'Description' %>
   <%= f.text_field :description %><br />
 
+  <%= label_tag 'methodology', 'Methodologies Accepted' %>
+  <%= f.select :methodologies, options_for_select(["Asst", "dir", "pres"]), {}, {multiple: true} %>
 
+  <%=
+    @journal.methodologies.inspect
+  %>
   <div class="actions">
     <%= f.submit %>
   </div>

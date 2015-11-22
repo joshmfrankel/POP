@@ -24,22 +24,32 @@ RSpec.describe MethodologiesController, type: :controller do
   # Methodology. As you add validations to Methodology, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    build(:methodology).attributes
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    build(:methodology, name: nil).attributes
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # MethodologiesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_user_session) {
+    sign_in create(:user, :user)
+  }
+
+  let(:valid_moderator_session) {
+    sign_in create(:user, :moderator)
+  }
+
+  let(:valid_admin_session) {
+    sign_in create(:user, :admin)
+  }
 
   describe "GET #index" do
     it "assigns all methodologies as @methodologies" do
       methodology = Methodology.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {}, valid_moderator_session
       expect(assigns(:methodologies)).to eq([methodology])
     end
   end
@@ -47,14 +57,14 @@ RSpec.describe MethodologiesController, type: :controller do
   describe "GET #show" do
     it "assigns the requested methodology as @methodology" do
       methodology = Methodology.create! valid_attributes
-      get :show, {:id => methodology.to_param}, valid_session
+      get :show, {:id => methodology.to_param}, valid_moderator_session
       expect(assigns(:methodology)).to eq(methodology)
     end
   end
 
   describe "GET #new" do
     it "assigns a new methodology as @methodology" do
-      get :new, {}, valid_session
+      get :new, {}, valid_moderator_session
       expect(assigns(:methodology)).to be_a_new(Methodology)
     end
   end
@@ -62,7 +72,7 @@ RSpec.describe MethodologiesController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested methodology as @methodology" do
       methodology = Methodology.create! valid_attributes
-      get :edit, {:id => methodology.to_param}, valid_session
+      get :edit, {:id => methodology.to_param}, valid_moderator_session
       expect(assigns(:methodology)).to eq(methodology)
     end
   end
@@ -71,30 +81,30 @@ RSpec.describe MethodologiesController, type: :controller do
     context "with valid params" do
       it "creates a new Methodology" do
         expect {
-          post :create, {:methodology => valid_attributes}, valid_session
+          post :create, {:methodology => valid_attributes}, valid_moderator_session
         }.to change(Methodology, :count).by(1)
       end
 
       it "assigns a newly created methodology as @methodology" do
-        post :create, {:methodology => valid_attributes}, valid_session
+        post :create, {:methodology => valid_attributes}, valid_moderator_session
         expect(assigns(:methodology)).to be_a(Methodology)
         expect(assigns(:methodology)).to be_persisted
       end
 
       it "redirects to the created methodology" do
-        post :create, {:methodology => valid_attributes}, valid_session
-        expect(response).to redirect_to(Methodology.last)
+        post :create, {:methodology => valid_attributes}, valid_moderator_session
+        expect(response).to redirect_to methodologies_url
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved methodology as @methodology" do
-        post :create, {:methodology => invalid_attributes}, valid_session
-        expect(assigns(:methodology)).to be_a_new(Methodology)
+        post :create, {:methodology => invalid_attributes}, valid_moderator_session
+        expect(assigns(:methodology)).to be_a(Methodology)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:methodology => invalid_attributes}, valid_session
+        post :create, {:methodology => invalid_attributes}, valid_moderator_session
         expect(response).to render_template("new")
       end
     end
@@ -108,34 +118,34 @@ RSpec.describe MethodologiesController, type: :controller do
 
       it "updates the requested methodology" do
         methodology = Methodology.create! valid_attributes
-        put :update, {:id => methodology.to_param, :methodology => new_attributes}, valid_session
+        put :update, {:id => methodology.to_param, :methodology => new_attributes}, valid_moderator_session
         methodology.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested methodology as @methodology" do
         methodology = Methodology.create! valid_attributes
-        put :update, {:id => methodology.to_param, :methodology => valid_attributes}, valid_session
+        put :update, {:id => methodology.to_param, :methodology => valid_attributes}, valid_moderator_session
         expect(assigns(:methodology)).to eq(methodology)
       end
 
       it "redirects to the methodology" do
         methodology = Methodology.create! valid_attributes
-        put :update, {:id => methodology.to_param, :methodology => valid_attributes}, valid_session
-        expect(response).to redirect_to(methodology)
+        put :update, {:id => methodology.to_param, :methodology => valid_attributes}, valid_moderator_session
+        expect(response).to redirect_to methodologies_url
       end
     end
 
     context "with invalid params" do
       it "assigns the methodology as @methodology" do
         methodology = Methodology.create! valid_attributes
-        put :update, {:id => methodology.to_param, :methodology => invalid_attributes}, valid_session
+        put :update, {:id => methodology.to_param, :methodology => invalid_attributes}, valid_moderator_session
         expect(assigns(:methodology)).to eq(methodology)
       end
 
       it "re-renders the 'edit' template" do
         methodology = Methodology.create! valid_attributes
-        put :update, {:id => methodology.to_param, :methodology => invalid_attributes}, valid_session
+        put :update, {:id => methodology.to_param, :methodology => invalid_attributes}, valid_moderator_session
         expect(response).to render_template("edit")
       end
     end
@@ -145,13 +155,13 @@ RSpec.describe MethodologiesController, type: :controller do
     it "destroys the requested methodology" do
       methodology = Methodology.create! valid_attributes
       expect {
-        delete :destroy, {:id => methodology.to_param}, valid_session
+        delete :destroy, {:id => methodology.to_param}, valid_admin_session
       }.to change(Methodology, :count).by(-1)
     end
 
     it "redirects to the methodologies list" do
       methodology = Methodology.create! valid_attributes
-      delete :destroy, {:id => methodology.to_param}, valid_session
+      delete :destroy, {:id => methodology.to_param}, valid_admin_session
       expect(response).to redirect_to(methodologies_url)
     end
   end

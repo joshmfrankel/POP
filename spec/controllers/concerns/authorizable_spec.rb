@@ -26,7 +26,5 @@ describe UserRole do
 
   it 'should redirect for non-admins' do
     sign_in create(:user, :user)
-    #subject.authorize_moderator!
-    #pp response
   end
 end

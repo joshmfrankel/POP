@@ -8,7 +8,8 @@ Features:
  ☐ Moderation
  ☐ Active Admin management
  ☐ Facetted search
- Journal.includes(:methodologies)
+ Journal.includes(:methodologiesmethodologies)
+ @journal.methodologies
 
 Task Breakdown:
  ☐ Navigation for logged in and non-logged in users
