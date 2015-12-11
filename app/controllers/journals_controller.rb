@@ -5,6 +5,7 @@ class JournalsController < ApplicationController
   before_action :authorize_moderator!, only: [:index, :edit, :update, :approve, :unapprove]
   before_action :authorize_user!, only: [:new, :create, :show]
   before_action :methodologies, only: [:new, :edit]
+  before_action :selected_methodologies, only: [:edit]
 
   # GET /journals
   # GET /journals.json
@@ -31,6 +32,7 @@ class JournalsController < ApplicationController
   def create
     # A user has many journals. A journal belongs to a user
     @journal = current_user.journals.new(journal_params)
+    binding.remote_pry
 
     respond_to do |format|
       if @journal.save
@@ -87,6 +89,10 @@ class JournalsController < ApplicationController
 
     def methodologies
       @methodologies = Methodology.all
+    end
+
+    def selected_methodologies
+      @selected_methodologies = Journal.find(params[:id]).methodologies
     end
 
     # Use callbacks to share common setup or constraints between actions.

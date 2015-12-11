@@ -24,12 +24,8 @@
   <%= f.text_field :description %><br />
 
   <%= label_tag 'methodology', 'Methodologies Accepted' %>
-  <%= f.select :methodologies, options_from_collection_for_select(@methodologies, 'id', 'name', []), {}, {multiple: true} %>
+  <%= f.collection_check_boxes :methodologies, @methodologies, :id, :name %>
 
-
-  <%=
-    #@journal.methodologies.inspect
-  %>
   <div class="actions">
     <%= f.submit %>
   </div>

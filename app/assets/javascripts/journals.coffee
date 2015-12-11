@@ -4,6 +4,7 @@
 
 $ ->
   $('a[data-remote]').on 'ajax:success', (e, data, status, xhr) ->
+    data.approved = 'false' unless data.approved
     $("[data-id='#{data.id}'] [data-attribute='approved']")
       .html(data.approved)
       .animate {
