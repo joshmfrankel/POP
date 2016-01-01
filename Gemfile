@@ -42,6 +42,7 @@ gem 'devise', '3.5.2'
 # ElasticSearch
 gem 'elasticsearch-model', '0.1.8'
 gem 'elasticsearch-rails', '0.1.8'
+gem 'searchkick', '1.1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution
@@ -60,6 +61,8 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'faker'
   gem 'database_cleaner', '1.5.1'
+
+  gem "rails-erd"
 end
 
 group :test do

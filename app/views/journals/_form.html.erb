@@ -24,7 +24,7 @@
   <%= f.text_field :description %><br />
 
   <%= label_tag 'methodology', 'Methodologies Accepted' %>
-  <%= f.collection_check_boxes :methodologies, @methodologies, :id, :name %>
+  <%= f.collection_check_boxes :methodology_ids, @methodologies, :id, :name %>
 
   <div class="actions">
     <%= f.submit %>
