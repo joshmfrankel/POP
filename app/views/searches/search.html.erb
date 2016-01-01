@@ -3,6 +3,10 @@
   <%= content_tag(:label) do %>
     Search terms: <%= text_field_tag :q, params[:q] %>
   <% end %>
+
+  <%= content_tag(:label) do %>
+    Editor:
+  <% end %>
   <%= submit_tag 'Search' %>
 <% end %>
 
