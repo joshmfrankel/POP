@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :journal do
     title "MyString"
-    editor "MyString"
+    editor "Josh"
     description "MyText"
     impact_factor 1
   end

@@ -7,7 +7,7 @@ RSpec.describe SearchesController, type: :controller do
       expect(assigns(:journals)).to be_empty
     end
 
-    context 'generic form' do
+    context 'generic search form' do
       it 'render index with results' do
         get :search, q: 'MyString'
         expect(assigns(:journals)).to be_a(Searchkick::Results)
@@ -17,6 +17,13 @@ RSpec.describe SearchesController, type: :controller do
         get :search, q: 'GarbageQuery'
         expect(assigns(:journals)).to be_a(Searchkick::Results)
         puts assigns(:journals).inspect
+      end
+    end
+
+    context 'facetted search form' do
+      it 'uses editor filter' do
+        get :search, editor: 'Josh'
+        #puts assigns(:journals)
       end
     end
 

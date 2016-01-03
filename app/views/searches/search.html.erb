@@ -4,8 +4,14 @@
     Search terms: <%= text_field_tag :q, params[:q] %>
   <% end %>
 
+  <hr />
+  <h3>Facets</h3>
   <%= content_tag(:label) do %>
-    Editor:
+    Editor: <%= collection_select(:journal, :editor, Journal.all.uniq, :editor, :editor) %>
+  <% end %>
+
+  <%= content_tag(:label) do %>
+    Impact Factor: <%= select_tag :impact_factor, options_for_select(1..5) %>
   <% end %>
   <%= submit_tag 'Search' %>
 <% end %>
