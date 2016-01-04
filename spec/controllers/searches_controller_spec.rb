@@ -8,21 +8,37 @@ RSpec.describe SearchesController, type: :controller do
     end
 
     context 'generic search form' do
-      it 'render index with results' do
-        get :search, q: 'MyString'
-        expect(assigns(:journals)).to be_a(Searchkick::Results)
+      before(:each) do
+        journal = FactoryGirl.create(:journal)
+        fancy_journal = FactoryGirl.create(:fancy_journal)
+        journal.reindex
+        fancy_journal.reindex
+        Journal.searchkick_index.refresh
       end
 
-      it 'render index with query but no results' do
+      it 'with empty search criteria' do
+        get :search
+        expect(assigns(:journals)).to be_a(Searchkick::Results)
+        expect(assigns(:journals).size).to eql(2)
+      end
+
+      it 'with generic search criteria' do
+        get :search, q: 'MyString'
+        expect(assigns(:journals)).to be_a(Searchkick::Results)
+        expect(assigns(:journals).size).to eql(1)
+      end
+
+      it 'with bad generic search criteria' do
         get :search, q: 'GarbageQuery'
         expect(assigns(:journals)).to be_a(Searchkick::Results)
-        puts assigns(:journals).inspect
+        expect(assigns(:journals).size).to be_zero
       end
     end
 
     context 'facetted search form' do
       it 'uses editor filter' do
         get :search, editor: 'Josh'
+
         #puts assigns(:journals)
       end
     end

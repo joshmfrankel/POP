@@ -7,11 +7,11 @@
   <hr />
   <h3>Facets</h3>
   <%= content_tag(:label) do %>
-    Editor: <%= collection_select(:journal, :editor, Journal.all.uniq, :editor, :editor) %>
+    Editor: <%= select :journal, :editor, Journal.all.pluck(:editor).uniq, { include_blank: true } %>
   <% end %>
 
   <%= content_tag(:label) do %>
-    Impact Factor: <%= select_tag :impact_factor, options_for_select(1..5) %>
+    Impact Factor: <%= select :journal, :impact_factor, options_for_select(1..5), { include_blank: true } %>
   <% end %>
   <%= submit_tag 'Search' %>
 <% end %>
