@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   def search
+    #return @journals = [] if params[:q].nil?
     search_term = params[:q].blank? ? '*' : params[:q]
     #Rails.logger.info params[:journal].blank?.inspect
     #params[:journal][:editor] = 'test'
@@ -9,13 +10,16 @@ class SearchesController < ApplicationController
     # Rails.logger.info params[:journal][:editor].blank?.inspect
     # Rails.logger.info params[:journal][:impact_factor].empty?.inspect
     #params[:q] = '*' if params[:q].nil?
-    #return @journals = [] if params[:q].nil?
     #@journals = Journal.search search_term
-    @journals = Journal.search(search_term)
 
-    #@journals = Journal.search search_term,
-    #  where: {
-        #editor: params[:journal][:editor]
-    #  }
+    if params[:journal].nil?
+      @journals = Journal.search search_term
+    else
+    Rails.logger.info params[:journal].inspect
+      @journals = Journal.search search_term,
+        where: {
+          editor: params[:journal][:editor]
+        }
+    end
   end
 end

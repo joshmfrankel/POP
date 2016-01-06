@@ -36,7 +36,7 @@ RSpec.describe SearchesController, type: :controller do
     end
 
     context 'facetted search form' do
-      it 'uses editor filter' do
+      it 'with editor criteria' do
         get :search, editor: 'Josh'
 
         #puts assigns(:journals)
