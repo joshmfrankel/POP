@@ -1,25 +1,23 @@
 class SearchesController < ApplicationController
   def search
-    #return @journals = [] if params[:q].nil?
-    search_term = params[:q].blank? ? '*' : params[:q]
-    #Rails.logger.info params[:journal].blank?.inspect
-    #params[:journal][:editor] = 'test'
-    #params[:journal][:impact_factor]
-    #facetted = params.any? { |attribute| attribute.empty? }
-    #Rails.logger.info facetted.inspect
-    # Rails.logger.info params[:journal][:editor].blank?.inspect
-    # Rails.logger.info params[:journal][:impact_factor].empty?.inspect
-    #params[:q] = '*' if params[:q].nil?
-    #@journals = Journal.search search_term
-
-    if params[:journal].nil?
-      @journals = Journal.search search_term
+    if params[:q].nil? && params[:editor].nil? && params[:impact_factor].nil?
+      @journals = Journal.search '*',
+        aggs: [:editor, :impact_factor]
+      @aggs = @journals.aggs
     else
-    Rails.logger.info params[:journal].inspect
+
+      search_term = params[:q].blank? ? '*' : params[:q]
+
+      # Build where
+      where = {
+        editor: params[:editor],
+        impact_factor: params[:impact_factor]
+      }.reject{ |k, v| v.nil? }
+
       @journals = Journal.search search_term,
-        where: {
-          editor: params[:journal][:editor]
-        }
+        where: where,
+        aggs: [:editor, :impact_factor]
+      @aggs = @journals.aggs
     end
   end
 end
