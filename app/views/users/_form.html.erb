@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <div class="form-group clearfix">
+    <%= label_tag 'name', 'Name:', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-2">
+      <%= f.text_field :name, class: 'col-sm-2 form-control' %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -40,3 +40,7 @@ Journal.create! title: 'Klatuu Barata Nickto',
                 impact_factor: 15,
                 approved: true,
                 user_id: 2
+
+Methodology.create! name: 'CBT'
+Methodology.create! name: 'Emotional Focussed'
+Methodology.create! name: 'EMDR'
