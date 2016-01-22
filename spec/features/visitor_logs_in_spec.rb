@@ -44,7 +44,7 @@ feature 'Navigation menu' do
     expect(page).to have_link('Log out', href: destroy_user_session_path)
 
     expect(page).to have_link 'Manage Journals', href: journals_path
-    expect(page).to have_link 'Manage Users', href: '#'
+    expect(page).to have_link 'Manage Users', href: users_path
         expect(page).to have_link 'Manage Methodologies', href: methodologies_path
   end
 

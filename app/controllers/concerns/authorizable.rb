@@ -35,9 +35,13 @@ module Authorizable
     current_user.admin?
   end
 
+  def unauthorized(alert)
+    redirect_unauthorized(alert)
+  end
+
   private
 
-  def redirect_unauthorized
-    redirect_to root_url, status: :found, alert: I18n.t('authorization.denied')
+  def redirect_unauthorized(alert = I18n.t('authorization.denied'))
+    redirect_to root_url, status: :found, flash: { danger: alert }
   end
 end

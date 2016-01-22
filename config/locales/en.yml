@@ -21,5 +21,8 @@
 
 en:
   hello: "Hello world"
+  search:
+    no_methodology: 'No specified methodology'
   authorization:
     denied: 'Access Denied'
+    unauthorized_record: 'Invalid record'

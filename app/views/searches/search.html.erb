@@ -13,7 +13,7 @@
 
       <h3>Facets</h3>
       <%= link_to("reset facets", search_path) %>
-      <% @aggs.each do |a| %>
+      <% @journals.aggs.each do |a| %>
         <%= content_tag :h4, a[0] %>
         <% a.last['buckets'].each do |facet| %>
 
@@ -30,9 +30,17 @@
           <li class="media">
             <div class="media-body">
               <h3 class="media-heading"><em><%= journal.title %></em></h3>
-              <p><strong>Editor:</strong> <%= journal.editor %><br />
-              <strong>Impact Factor:</strong> <%= journal.impact_factor %><br />
-              <strong>Description:</strong> <%= journal.description %><br />
+              <p><strong>Editor:</strong> <%= journal.editor %></p>
+              <p><strong>Impact Factor:</strong> <%= journal.impact_factor %></p>
+              <p><strong>Description:</strong> <%= journal.description %></p>
+              <%= content_tag :p do %>
+                <strong>Methodologies:</strong>
+                <% if journal.methodologies.size > 0 %>
+                  <%= journal.methodologies.pluck(:name).join(', ') %>
+                <% else %>
+                  <%= t('search.no_methodology') %>
+                <% end %>
+              <% end %>
               <%= link_to("See details", journal_path(journal.id)) %>
             </div>
           </li>

@@ -5,6 +5,7 @@ class JournalsController < ApplicationController
   before_action :authorize_moderator!, only: [:index, :edit, :update, :approve, :unapprove]
   before_action :authorize_user!, only: [:new, :create, :show]
   before_action :methodologies, only: [:new, :edit, :show, :update]
+  before_action :form_params, only: [:new, :edit]
   before_action :selected_methodologies, only: [:edit]
 
   # GET /journals
@@ -90,6 +91,10 @@ class JournalsController < ApplicationController
       @methodologies = Methodology.all
     end
 
+    def form_params
+      @form_params = ['title', 'editor', 'impact_factor', 'description']
+    end
+
     def selected_methodologies
       @selected_methodologies = Journal.find(params[:id]).methodologies
     end
@@ -98,12 +103,11 @@ class JournalsController < ApplicationController
     def set_journal
       @journal = Journal.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      # redirect_to journals_path, method: :get, notice: 'Journal does not exist'
-      puts 'hi'
+      unauthorized(t('authorization.unauthorized_record'))
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(:title, :editor, :impact_factor, :user_id, methodology_ids: [])
+      params.require(:journal).permit(:title, :editor, :impact_factor, :description, :user_id, methodology_ids: [])
     end
 end

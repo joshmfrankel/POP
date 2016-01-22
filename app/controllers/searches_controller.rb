@@ -2,8 +2,7 @@ class SearchesController < ApplicationController
   def search
     if params[:q].nil? && params[:editor].nil? && params[:impact_factor].nil?
       @journals = Journal.search '*',
-        aggs: [:editor, :impact_factor]
-      @aggs = @journals.aggs
+        aggs: [:editor, :impact_factor, :methodology_ids]
     else
 
       search_term = params[:q].blank? ? '*' : params[:q]
@@ -16,8 +15,9 @@ class SearchesController < ApplicationController
 
       @journals = Journal.search search_term,
         where: where,
-        aggs: [:editor, :impact_factor]
-      @aggs = @journals.aggs
+        aggs: [:editor, :impact_factor],
+        smart_aggs: false
     end
   end
 end
+

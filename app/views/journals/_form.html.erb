@@ -1,4 +1,5 @@
-<%= form_for(@journal) do |f| %>
+<hr />
+<%= form_for @journal, html: {class: 'form-horizontal'} do |f| %>
   <% if @journal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
@@ -11,22 +12,22 @@
     </div>
   <% end %>
 
-  <%= label_tag 'title', 'Title:' %>
-  <%= f.text_field :title %><br />
+  <%= render 'shared/forms/text_field_form_group', f: f, fields: @form_params %>
 
-  <%= label_tag 'editor', 'Editor:' %>
-  <%= f.text_field :editor %><br />
+  <div class="form-group">
+    <%= label_tag 'methodology', 'Methodologies Accepted', class: 'col-sm-2' %>
+    <div class="col-sm-10 collection-checkbox-container">
+      <%= f.collection_check_boxes :methodology_ids, @methodologies, :id, :name do |c| %>
+        <%= c.label class: 'checkbox col-sm-4' do %>
+          <%= c.check_box + c.text %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-  <%= label_tag 'impact_factor', 'Impact Factor' %>
-  <%= f.text_field :impact_factor %><br />
-
-  <%= label_tag 'description', 'Description' %>
-  <%= f.text_field :description %><br />
-
-  <%= label_tag 'methodology', 'Methodologies Accepted' %>
-  <%= f.collection_check_boxes :methodology_ids, @methodologies, :id, :name %>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

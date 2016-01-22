@@ -40,7 +40,7 @@
               <% end %>
 
               <% if current_user.admin? %>
-                <li><%= link_to("Manage Users", '#') %></li>
+                <li><%= link_to("Manage Users", users_path) %></li>
               <% end %>
 
               <li role="separator" class="divider"></li>

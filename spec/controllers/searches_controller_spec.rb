@@ -39,7 +39,7 @@ RSpec.describe SearchesController, type: :controller do
       it 'with editor criteria' do
         get :search, editor: 'Josh'
 
-        #puts assigns(:journals)
+        expect(assigns(:journals).size).to eql(1)
       end
     end
 
