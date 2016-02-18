@@ -92,7 +92,7 @@ class JournalsController < ApplicationController
     end
 
     def form_params
-      @form_params = ['title', 'editor', 'impact_factor', 'description']
+      @form_params = %w(title editor impact_factor description)
     end
 
     def selected_methodologies

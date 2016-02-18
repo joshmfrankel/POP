@@ -40,8 +40,8 @@ gem 'bootstrap-sass', '3.3.5.1'
 gem 'devise', '3.5.2'
 
 # ElasticSearch
-gem 'elasticsearch-model', '0.1.8'
-gem 'elasticsearch-rails', '0.1.8'
+#gem 'elasticsearch-model', '0.1.8'
+#gem 'elasticsearch-rails', '0.1.8'
 gem 'searchkick', '1.1.2'
 
 group :development, :test do
@@ -83,5 +83,5 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
-  gem 'spring', '1.4.0'
+  gem 'spring', '1.6.2'
 end

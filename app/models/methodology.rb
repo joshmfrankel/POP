@@ -1,5 +1,6 @@
 class Methodology < ActiveRecord::Base
-  has_and_belongs_to_many :journals, dependent: :destroy
+  has_many :tags
+  has_many :journals, through: :tags
 
   validates :name, presence: true
 end

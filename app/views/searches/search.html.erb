@@ -17,7 +17,7 @@
         <%= content_tag :h4, a[0] %>
         <% a.last['buckets'].each do |facet| %>
 
-          <%= link_to "#{facet['key']} (#{facet['doc_count']})", params.slice(:editor, :impact_factor).merge(a[0] => facet['key']) %>
+          <%= link_to "#{facet['key']} (#{facet['doc_count']})", params.slice(:editor, :impact_factor, :methodology).merge(a[0] => facet['key']) %>
           <br />
         <% end %>
         <br />

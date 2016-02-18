@@ -27,18 +27,18 @@ Task Breakdown:
    ✔ methodology accepted (has_and_belongs_to_many) @done (15-10-31 13:12)
  ☐ Roles
    ☐ Users
-     ☐ Can use search functionality
-     ☐ Can create new journal record for moderation
+     ✔ Can use search functionality @done (16-01-27 16:17)
+     ✔ Can create new journal record for moderation @done (16-01-27 16:17)
      ☐ 5 free searches
      ☐ Paid account gets infinite
    ☐ Moderator
-     ☐ Can manage Users
-     ☐ Can manage Journals
-     ☐ Can manage Tags
+     ✔ Can manage Users @done (16-01-27 16:17)
+     ✔ Can manage Journals @done (16-01-27 16:17)
+     ✔ Can manage Tags @done (16-01-27 16:17)
  ☐ Search
-   ☐ Search by any journal model column
-   ☐ Search by date created / updated
-   ☐ Elastic Search & ransack research
+   ✔ Search by any journal model column @done (16-01-27 16:17)
+   ✔ Search by date created / updated @done (16-01-27 16:17)
+   ✔ Elastic Search @done (16-01-27 16:17)
  ☐ Twitter automated updates
    ☐ When journal is accepted
 
