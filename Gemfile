@@ -40,9 +40,8 @@ gem 'bootstrap-sass', '3.3.5.1'
 gem 'devise', '3.5.2'
 
 # ElasticSearch
-#gem 'elasticsearch-model', '0.1.8'
-#gem 'elasticsearch-rails', '0.1.8'
 gem 'searchkick', '1.1.2'
+gem 'react-rails', '~> 1.6.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution
