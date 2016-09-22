@@ -38,7 +38,7 @@ RSpec.describe SearchesController, type: :controller do
     context 'facetted search form' do
       it 'with editor criteria' do
         get :search, editor: 'Josh'
-        #expect(assigns(:journals).size).to eql(1)
+        expect(assigns(:journals).size).to eql(1)
       end
     end
 
